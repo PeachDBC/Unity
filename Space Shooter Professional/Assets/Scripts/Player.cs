@@ -70,7 +70,7 @@ void Start()
     void FireLaser()
     {
         _canFire = Time.time + _fireRate;
-        var offset = new Vector3(0, 0.8f, 0);
+        var offset = new Vector3(0, 1.05f, 0);
         Instantiate(_laserPrefab, transform.position + offset, Quaternion.identity);
                
     }
