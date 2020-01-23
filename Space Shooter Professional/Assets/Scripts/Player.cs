@@ -100,4 +100,14 @@ void Start()
             Destroy(this.gameObject);
         }
     }
+    public void EnableTripleShot()
+    {
+        _tripleShotActive = true;
+        StartCoroutine(TripleShotPowerDownRoutine());
+    }
+    IEnumerator TripleShotPowerDownRoutine()
+    {
+        yield return new WaitForSeconds(5.0f);
+        _tripleShotActive = false;
+    }
 }
