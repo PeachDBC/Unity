@@ -48,14 +48,15 @@ public class Powerup : MonoBehaviour
                 if (_powerupID == 0)
                 {
                     player.EnableTripleShot();
+                    Debug.Log("TripleShot powerup enabled");
                 }
                 else if (_powerupID == 1)
                 {
-                    print("Speed powerup enabled");
+                    Debug.Log("Speed powerup enabled");
                 }
                 else if (_powerupID == 2)
                 {
-                    print("Shield powerup enabled");
+                    Debug.Log("Shield powerup enabled");
                 }
             }
             
