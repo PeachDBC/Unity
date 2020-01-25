@@ -154,6 +154,9 @@ MonoBehaviour:
   _enemyContainer: {fileID: 1670354494}
   _powerupPrefab: {fileID: 1345267104973588640, guid: 659b686e117ba1b438d91dd0c532ed2f,
     type: 3}
+  _stopSpawning: 0
+  _speedPowerupPrefab: {fileID: 9212984663729242968, guid: feddb7376a7ffc7469d2183246f2961a,
+    type: 3}
 --- !u!4 &116501281
 Transform:
   m_ObjectHideFlags: 0

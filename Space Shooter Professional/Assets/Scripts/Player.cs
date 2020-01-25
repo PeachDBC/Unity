@@ -5,7 +5,7 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     [SerializeField]
-    private float _speed = 3.5f;
+    private float _speed; //= 3.5f;
     [SerializeField]
     private GameObject _laserPrefab;
     [SerializeField]
@@ -19,6 +19,7 @@ public class Player : MonoBehaviour
     private GameObject _tripleShotPrefab;
     [SerializeField]
     private bool _tripleShotActive = false;
+    private bool _speedBoostActive = false;
 
     //variable for is Triple Shot Active
 
@@ -49,6 +50,14 @@ void Start()
     {
         float horizontalInput = Input.GetAxis("Horizontal");
         float verticalInput = Input.GetAxis("Vertical");
+        if (_speedBoostActive == true)
+        {
+            _speed = 10.0f;
+        }
+        else
+        {
+            _speed = 5.0f;
+        }
 
         transform.Translate(new Vector3(horizontalInput, verticalInput, 0) * _speed * Time.deltaTime);
 
@@ -74,11 +83,8 @@ void Start()
         {
             Instantiate(_laserPrefab, transform.position + offset, Quaternion.identity);
         }
-        //if space key pressed,
-        //if triple shot active is true - fire 3 lasers
-        //else fire 1 laser
-
     }
+
     public void Damage()
     {
         _lives -= 1;
@@ -94,9 +100,21 @@ void Start()
         _tripleShotActive = true;
         StartCoroutine(TripleShotPowerDownRoutine());
     }
+    public void EnableSpeedPowerup()
+    {
+        _speedBoostActive = true;
+        StartCoroutine(SpeedPowerupPowerDownRoutine());
+
+    }
     IEnumerator TripleShotPowerDownRoutine()
     {
         yield return new WaitForSeconds(5.0f);
         _tripleShotActive = false;
     }
+    IEnumerator SpeedPowerupPowerDownRoutine()
+    {
+        yield return new WaitForSeconds(5.0f);
+        _speedBoostActive = false;
+    }
+
 }

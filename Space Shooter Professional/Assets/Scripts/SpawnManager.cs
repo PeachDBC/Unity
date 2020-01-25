@@ -10,13 +10,17 @@ public class SpawnManager : MonoBehaviour
     private GameObject _enemyContainer;
     [SerializeField]
     private GameObject _powerupPrefab;
+    [SerializeField]
     private bool _stopSpawning = false;
+    [SerializeField]
+    private GameObject _speedPowerupPrefab;
 
     // Start is called before the first frame update
     void Start()
     {
         StartCoroutine(SpawnEnemyRoutine());
         StartCoroutine(SpawnPowerUpRoutine());
+        StartCoroutine(SpawnSpeedBoostRoutine());
     }
 
     // Update is called once per frame
@@ -43,9 +47,20 @@ public class SpawnManager : MonoBehaviour
             //newPowerup.transform.parent = _powerupContainer.transform;
             int randomTime = Random.Range(3, 8);
             yield return new WaitForSeconds(randomTime);
-            print("Waited for " + randomTime + " seconds.");
         }
     }
+    IEnumerator SpawnSpeedBoostRoutine()
+    {
+        while (_stopSpawning == false)
+        {
+            Vector3 posToSpawn = new Vector3(Random.Range(-8f, 8f), 7, 0);
+            GameObject newSpeedPowerup = Instantiate(_speedPowerupPrefab, posToSpawn, Quaternion.identity);
+            int randomTime = Random.Range(3, 8);
+            yield return new WaitForSeconds(randomTime);
+        }
+            
+    }
+
     public void OnPlayerDeath()
     {
         _stopSpawning = true;
