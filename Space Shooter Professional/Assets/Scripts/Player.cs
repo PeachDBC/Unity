@@ -5,7 +5,9 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     [SerializeField]
-    private float _speed; //= 3.5f;
+    private float _speed = 3.5f;
+    [SerializeField]
+    private float _speedX = 3;
     [SerializeField]
     private GameObject _laserPrefab;
     [SerializeField]
@@ -19,6 +21,7 @@ public class Player : MonoBehaviour
     private GameObject _tripleShotPrefab;
     [SerializeField]
     private bool _tripleShotActive = false;
+    [SerializeField]
     private bool _speedBoostActive = false;
 
     //variable for is Triple Shot Active
@@ -52,14 +55,12 @@ void Start()
         float verticalInput = Input.GetAxis("Vertical");
         if (_speedBoostActive == true)
         {
-            _speed = 10.0f;
+            transform.Translate(new Vector3(horizontalInput, verticalInput, 0) * (_speed * _speedX) * Time.deltaTime);
         }
         else
         {
-            _speed = 5.0f;
+            transform.Translate(new Vector3(horizontalInput, verticalInput, 0) * _speed * Time.deltaTime);
         }
-
-        transform.Translate(new Vector3(horizontalInput, verticalInput, 0) * _speed * Time.deltaTime);
 
         transform.position = new Vector3(transform.position.x, Mathf.Clamp(transform.position.y, -3.0f, 0), 0);
         if (transform.position.x >= 11)
@@ -104,7 +105,6 @@ void Start()
     {
         _speedBoostActive = true;
         StartCoroutine(SpeedPowerupPowerDownRoutine());
-
     }
     IEnumerator TripleShotPowerDownRoutine()
     {
