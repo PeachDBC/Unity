@@ -62,7 +62,7 @@ void Start()
             transform.Translate(new Vector3(horizontalInput, verticalInput, 0) * _speed * Time.deltaTime);
         }
 
-        transform.position = new Vector3(transform.position.x, Mathf.Clamp(transform.position.y, -3.0f, 0), 0);
+        transform.position = new Vector3(transform.position.x, Mathf.Clamp(transform.position.y, -2.5f, 0), 0);
         if (transform.position.x >= 11)
         {
             transform.position = new Vector3(-11, transform.position.y, 0);
