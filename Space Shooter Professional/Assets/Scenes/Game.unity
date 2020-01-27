@@ -156,7 +156,7 @@ MonoBehaviour:
   powerups:
   - {fileID: 1345267104973588640, guid: 659b686e117ba1b438d91dd0c532ed2f, type: 3}
   - {fileID: 9212984663729242968, guid: feddb7376a7ffc7469d2183246f2961a, type: 3}
-  - {fileID: 0}
+  - {fileID: 1818009355680989658, guid: cda622ba5d4ec83479183c697dcfd5f1, type: 3}
 --- !u!4 &116501281
 Transform:
   m_ObjectHideFlags: 0
@@ -214,6 +214,7 @@ MonoBehaviour:
     type: 3}
   _tripleShotActive: 0
   _speedBoostActive: 0
+  _shieldPowerupActive: 0
 --- !u!212 &594958758
 SpriteRenderer:
   m_ObjectHideFlags: 0
