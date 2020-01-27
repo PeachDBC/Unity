@@ -55,7 +55,7 @@ public class Powerup : MonoBehaviour
                         player.EnableSpeedPowerup();
                         break;
                     case 2:
-                        Debug.Log("Shield powerup enabled");
+                        player.EnableShieldsPowerup();
                         break;
                     default:
                         Debug.Log("Default amount");

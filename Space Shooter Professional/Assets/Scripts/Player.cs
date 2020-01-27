@@ -90,6 +90,12 @@ void Start()
 
     public void Damage()
     {
+        if (_shieldPowerupActive == true)
+        {
+            _shieldPowerupActive = false;
+            return;
+        }
+
         _lives -= 1;
         if (_lives < 1)
         {
@@ -98,6 +104,7 @@ void Start()
             Destroy(this.gameObject);
         }
     }
+
     public void EnableTripleShot()
     {
         _tripleShotActive = true;
@@ -111,7 +118,7 @@ void Start()
     public void EnableShieldsPowerup()
     {
         _shieldPowerupActive = true;
-        StartCoroutine(ShieldsPowerDownRoutine());
+
     }
     IEnumerator TripleShotPowerDownRoutine()
     {
@@ -122,11 +129,6 @@ void Start()
     {
         yield return new WaitForSeconds(5.0f);
         _speedBoostActive = false;
-    }
-    IEnumerator ShieldsPowerDownRoutine()
-    {
-        yield return new WaitForSeconds(5.0f);
-        _shieldPowerupActive = false;
     }
 
 }
