@@ -215,7 +215,7 @@ MonoBehaviour:
   _tripleShotActive: 0
   _speedBoostActive: 0
   _shieldPowerupActive: 0
-  _shieldAura: {fileID: 0}
+  _shieldVisualizer: {fileID: 1360579404}
 --- !u!212 &594958758
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -317,7 +317,7 @@ GameObject:
   - component: {fileID: 1360579405}
   - component: {fileID: 1360579406}
   m_Layer: 0
-  m_Name: Shields_00000
+  m_Name: Shields
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

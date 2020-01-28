@@ -26,7 +26,7 @@ public class Player : MonoBehaviour
     [SerializeField]
     private bool _shieldPowerupActive = false;
     [SerializeField]
-    private GameObject _shieldAura;
+    private GameObject _shieldVisualizer;
 
     //variable for is Triple Shot Active
 
@@ -96,6 +96,7 @@ void Start()
         if (_shieldPowerupActive == true)
         {
             _shieldPowerupActive = false;
+            _shieldVisualizer.SetActive(false);
             return;
         }
 
@@ -121,6 +122,8 @@ void Start()
     public void EnableShieldsPowerup()
     {
         _shieldPowerupActive = true;
+        _shieldVisualizer.SetActive(true);
+
 
     }
     IEnumerator TripleShotPowerDownRoutine()
