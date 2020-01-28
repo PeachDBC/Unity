@@ -25,6 +25,8 @@ public class Player : MonoBehaviour
     private bool _speedBoostActive = false;
     [SerializeField]
     private bool _shieldPowerupActive = false;
+    [SerializeField]
+    private GameObject _shieldAura;
 
     //variable for is Triple Shot Active
 
@@ -33,6 +35,7 @@ void Start()
     {
         //take the current position = new position(0,0,0)
         transform.position = new Vector3(0, 0, 0);
+
         _spawnManager = GameObject.Find("Spawn_Manager").GetComponent<SpawnManager>();
         if (_spawnManager == null)
         {
