@@ -42,6 +42,8 @@ public class Enemy : MonoBehaviour
         else if (other.tag == "Laser")
         {
             Destroy(other.gameObject);
+            Player player = other.transform.GetComponent<Player>();
+            player.addPoints();
             //Add 10 to score
             Destroy(this.gameObject);
 

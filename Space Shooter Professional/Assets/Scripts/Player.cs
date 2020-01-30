@@ -28,7 +28,7 @@ public class Player : MonoBehaviour
     [SerializeField]
     private GameObject _shieldVisualizer;
     [SerializeField]
-    private int _score;
+    private int _score = 0;
 
     //variable for is Triple Shot Active
 
@@ -140,6 +140,7 @@ void Start()
     }
     public void addPoints()
     {
+        _score += 10;
 
     }
     //method to add 10 to score
