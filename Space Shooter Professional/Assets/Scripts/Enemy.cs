@@ -41,8 +41,10 @@ public class Enemy : MonoBehaviour
         }
         else if (other.tag == "Laser")
         {
+            Destroy(other.gameObject);
+            //Add 10 to score
             Destroy(this.gameObject);
-            Destroy(other.gameObject); 
+
         }
 
     }

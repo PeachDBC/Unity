@@ -27,6 +27,8 @@ public class Player : MonoBehaviour
     private bool _shieldPowerupActive = false;
     [SerializeField]
     private GameObject _shieldVisualizer;
+    [SerializeField]
+    private int _score;
 
     //variable for is Triple Shot Active
 
@@ -136,5 +138,11 @@ void Start()
         yield return new WaitForSeconds(5.0f);
         _speedBoostActive = false;
     }
+    public void addPoints()
+    {
+
+    }
+    //method to add 10 to score
+    //communicate with UI to update score
 
 }
