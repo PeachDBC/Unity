@@ -6,7 +6,7 @@ public class MainMenu : MonoBehaviour
 {
     public void LoadGame()
     {
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene(1); //load game scene
     }
     // Start is called before the first frame update
     void Start()
