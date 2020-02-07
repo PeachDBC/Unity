@@ -49,8 +49,9 @@ public class Enemy : MonoBehaviour
                 player.Damage();
             }
             //trigger the animation
-
-            Destroy(this.gameObject);
+            _anim.SetTrigger("OnEnemyDeath");
+            _enemySpeed = 0; //stop moving when destroyed
+            Destroy(this.gameObject, 2.8f);
         }
         else if (other.tag == "Laser")
         {
@@ -60,7 +61,9 @@ public class Enemy : MonoBehaviour
                 _player.ScoreKeeper(10);
             }
             //trigger anim
-            Destroy(this.gameObject);
+            _anim.SetTrigger("OnEnemyDeath");
+            _enemySpeed = 0;
+            Destroy(this.gameObject, 2.8f);
 
         }
 
