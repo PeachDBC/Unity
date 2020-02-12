@@ -30,6 +30,9 @@ public class Player : MonoBehaviour
     [SerializeField]
     private int _score;
     private UIManager _uiManager;
+    [SerializeField]
+    private GameObject _leftEngine, _rightEngine;
+
 
 
     //variable for is Triple Shot Active
@@ -111,6 +114,17 @@ public class Player : MonoBehaviour
         }
 
         _lives -= 1;
+        if (_lives == 2)
+        {
+            _rightEngine.SetActive(true);
+        }
+        else if (_lives == 1)
+        {
+            _leftEngine.SetActive(true);
+
+        }
+        //if lives = 2 enable right engine
+        //if lives = 1 enable left engine
 
         _uiManager.UpdateLives(_lives);
 
