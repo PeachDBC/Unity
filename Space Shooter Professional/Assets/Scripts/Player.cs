@@ -36,8 +36,6 @@ public class Player : MonoBehaviour
     private AudioClip _laserSoundClip;
     [SerializeField]
     AudioSource _audioSource;
-    [SerializeField]
-    private AudioClip _playerDestroyed;
 
     void Start()
     {
@@ -145,7 +143,6 @@ public class Player : MonoBehaviour
         {
             //communicate with spawn manager
             _spawnManager.OnPlayerDeath();
-            AudioSource.PlayClipAtPoint(_playerDestroyed, transform.position, 1.0f);
             Destroy(this.gameObject);
         }
     }

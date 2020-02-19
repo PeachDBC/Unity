@@ -6,18 +6,15 @@ public class Enemy : MonoBehaviour
 {
     // Start is called before the first frame update
     [SerializeField]
-    private float _enemySpeed = 4.0f;
+    private float _speed = 4.0f;
     private Player _player;
     private Animator _anim;
-    [SerializeField]
     private AudioSource _audioSource;
-    [SerializeField]
-    private AudioClip _enemyDestroyed;
 
     void Start()
     {
-        _audioSource = GetComponent<AudioSource>();
         _player = GameObject.Find("Player").GetComponent<Player>();
+        _audioSource = GetComponent<AudioSource>();
         if (_player == null)
         {
             Debug.LogError("Player is NULL.");
@@ -34,7 +31,7 @@ public class Enemy : MonoBehaviour
     {
         //move down at 4 meters/second
         //if bottom of screen, respawn at top with a new random x position
-        transform.Translate(Vector3.down * _enemySpeed * Time.deltaTime);
+        transform.Translate(Vector3.down * _speed * Time.deltaTime);
         if (transform.position.y <= -5.5)
         {
             float randomX = Random.Range(-9.4f, 9.4f);
@@ -55,8 +52,8 @@ public class Enemy : MonoBehaviour
             }
             //trigger the animation
             _anim.SetTrigger("OnEnemyDeath");
-            _enemySpeed = 0; //stop moving when destroyed
-            AudioSource.PlayClipAtPoint(_enemyDestroyed, transform.position, 1.0f);
+            _speed = 0; //stop moving when destroyed
+            _audioSource.Play();
             Destroy(this.gameObject, 2.8f);
         }
         else if (other.tag == "Laser")
@@ -68,7 +65,8 @@ public class Enemy : MonoBehaviour
             }
             //trigger anim
             _anim.SetTrigger("OnEnemyDeath");
-            _enemySpeed = 0;
+            _speed = 0;
+            _audioSource.Play();
             Destroy(this.gameObject, 2.8f);
 
         }

@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 664354873}
   - component: {fileID: 664354874}
   - component: {fileID: 3853691092499878089}
-  - component: {fileID: 1688942131433076505}
+  - component: {fileID: 1522116869152832396}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Enemy
@@ -49,8 +49,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _enemySpeed: 4
-  _audioSource: {fileID: 0}
-  _enemyDestroyed: {fileID: 8300000, guid: a885c043fab7e46438bba03ba9dab6bc, type: 3}
 --- !u!212 &3350920553514516810
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -166,7 +164,7 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!82 &1688942131433076505
+--- !u!82 &1522116869152832396
 AudioSource:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -176,7 +174,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: a885c043fab7e46438bba03ba9dab6bc, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
