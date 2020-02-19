@@ -15,17 +15,9 @@ public class Powerup : MonoBehaviour
     [SerializeField]
     private int _powerupID;
     [SerializeField]
-    private AudioSource _audioSource;
-    
-    void Start()
-    {
-        _audioSource = GetComponent<AudioSource>();
-        if (_audioSource == null)
-        {
-            Debug.LogError("Audio Source on the PowerUp is null");
-        }
+    private AudioClip _powerupClip;
 
-    }
+
 
     // Update is called once per frame
     void Update()
@@ -38,23 +30,22 @@ public class Powerup : MonoBehaviour
             }
     
 
-
         //move down at a speed of 3 (adjust in inspector)
         //when we leave the screen, destroy this object
     }
+
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.tag == "Player")
         {
-            //_isCollected = true;
-            //Debug.Log("Collected: " + _isCollected);
-
             Player player = other.transform.GetComponent<Player>();
+            AudioSource.PlayClipAtPoint(_powerupClip, transform.position);
             if (player != null)
             {
-                _audioSource.Play();
-                switch(_powerupID)
+                
+                switch (_powerupID)
                 {
+
                     case 0:
                         player.EnableTripleShot();
                         break;
@@ -71,11 +62,9 @@ public class Powerup : MonoBehaviour
                 
 
             }
-            
+
             Destroy(this.gameObject);
         }
     }
-    //OnTriggerCollision
-    //Only be collectable by the Player (HINT: Use Tags)
-    //on collected, destroy
+
 }
