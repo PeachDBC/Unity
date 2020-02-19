@@ -37,14 +37,8 @@ public class Player : MonoBehaviour
     [SerializeField]
     AudioSource _audioSource;
     [SerializeField]
-    private AudioClip _playerDestroyedClip;
+    private AudioClip _playerDestroyed;
 
-    //variable to store audio clip
-
-
-    //variable for is Triple Shot Active
-
-    //start is called before the first frame update
     void Start()
     {
         //take the current position = new position(0,0,0)
@@ -151,6 +145,7 @@ public class Player : MonoBehaviour
         {
             //communicate with spawn manager
             _spawnManager.OnPlayerDeath();
+            AudioSource.PlayClipAtPoint(_playerDestroyed, transform.position, 1.0f);
             Destroy(this.gameObject);
         }
     }

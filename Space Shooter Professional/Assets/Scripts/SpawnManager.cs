@@ -16,8 +16,14 @@ public class SpawnManager : MonoBehaviour
     //private GameObject _speedPowerupPrefab;
     private GameObject[] powerups;
 
+
+
     // Start is called before the first frame update
 
+    void Start()
+    {
+        GameObject.Find("Player").GetComponent<AudioSource>();
+    }
     public void StartSpawning()
     {
         StartCoroutine(SpawnEnemyRoutine());
