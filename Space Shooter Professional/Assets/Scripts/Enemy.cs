@@ -10,6 +10,8 @@ public class Enemy : MonoBehaviour
     private Player _player;
     private Animator _anim;
     private AudioSource _audioSource;
+    [SerializeField]
+    private GameObject _laserPrefab;
 
     void Start()
     {
@@ -67,6 +69,7 @@ public class Enemy : MonoBehaviour
             _anim.SetTrigger("OnEnemyDeath");
             _speed = 0;
             _audioSource.Play();
+            Destroy(GetComponent<Collider2D>());
             Destroy(this.gameObject, 2.8f);
 
         }
