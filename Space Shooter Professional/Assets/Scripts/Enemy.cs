@@ -12,6 +12,8 @@ public class Enemy : MonoBehaviour
     private AudioSource _audioSource;
     [SerializeField]
     private GameObject _laserPrefab;
+    private float _fireRate = 3.0f;
+    private float _canFire = -1;
 
     void Start()
     {
@@ -31,6 +33,24 @@ public class Enemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        var offset = new Vector3(0, -.05f, 0);
+        CalculateMovement();
+        if (Time.time > _canFire)
+        {
+            _fireRate = Random.Range(3f, 7f);
+            _canFire = Time.time + _fireRate;
+            GameObject enemyLaser = Instantiate(_laserPrefab, transform.position + offset, Quaternion.identity);
+            Laser[] lasers = enemyLaser.GetComponentsInChildren<Laser>();
+
+            for (int i = 0; i < lasers.Length; i++)
+            {
+                lasers[i].AssignEnemyLaser();
+            }
+
+        }
+    }
+    void CalculateMovement()
+    {
         //move down at 4 meters/second
         //if bottom of screen, respawn at top with a new random x position
         transform.Translate(Vector3.down * _speed * Time.deltaTime);
@@ -40,6 +60,7 @@ public class Enemy : MonoBehaviour
             transform.position = new Vector3(randomX, 7.2f, 0);
         }
     }
+
     private void OnTriggerEnter2D(Collider2D other)
     {
         //if other is Player, damage the player, destroy us
